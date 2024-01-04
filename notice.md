@@ -1,4 +1,4 @@
-common hints or keywords in problem statements that often indicate the potential use of specific algorithms or approaches:
+#### common hints in problem statements that often indicate the potential use of specific algorithms
 
 1. **"Find the shortest path":** This often points towards graph algorithms like Dijkstra's algorithm for weighted graphs or Breadth-First Search (BFS) for unweighted graphs.
 
