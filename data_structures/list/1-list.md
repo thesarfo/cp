@@ -4,7 +4,7 @@ objects. Like strings, they are indexed by integers starting with zero. The foll
 contains the most commonly used list methods and their descriptions
 
 
-### List methods
+## List methods
 
 1. list(s) Returns a list of the sequence s.
 

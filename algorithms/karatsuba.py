@@ -1,3 +1,4 @@
+import math
 from math import log10
 
 def karatsuba(x, y):
@@ -21,3 +22,16 @@ def karatsuba(x, y):
     
     #performs the multiplication
     return (((10**n)*ac) + bd + ((10**n_2)*(ad_bc)))
+
+# test cases
+test = karatsuba(5664354, 48484848484)
+test1 = karatsuba(847392, 32478)
+test2 = karatsuba(736, 842)
+test3 = karatsuba(33, 10)
+test4 = karatsuba(263, 3664)
+
+print(test)
+print(test1)
+print(test2)
+print(test3)
+print(test4)

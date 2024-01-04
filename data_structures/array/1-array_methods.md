@@ -1,5 +1,7 @@
 The array objects support the following attributes and methods:
 
+## Array Methods
+
 1. a.typecode - The typecode character used to create the array.
 
 2. a.itemsize - Size, in bytes, of items stored in the array.
