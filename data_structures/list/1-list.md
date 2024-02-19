@@ -25,3 +25,12 @@ contains the most commonly used list methods and their descriptions
 9. s.reverse() Reverses the order of s.
 
 10. s.sort(key ,[reverse]) Sorts s with optional key and reverse
+
+## List Operations
+
+1. Indexing - [ ] - Access an element of a sequence
+2. Concatenation - + - Combine sequences together
+3. repetition - * - Concatenate a repeated number of times
+4. membership - in - Ask whether an item is in a sequence
+5. length - len - Ask the number of items in the sequence
+6. slicing - [ : ] - Extract a part of a sequence
