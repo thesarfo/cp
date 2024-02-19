@@ -7,7 +7,7 @@ class Solution:
         return n == 1
 
 
-'''We start by checking if the number is zero or negative. If it is, we can't work with it, so we say it's not a power of two.
+'''We start by checking if the number is zero or negative. If it is, we can't work with it, so we say it's not a power of three.
 
 Now, to check if a number is a power of 3, we keep dividing it by 3 until we can't anymore. 
 
