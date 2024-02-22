@@ -6,10 +6,13 @@ class Fraction:
 
     def __str__(self):
         return str(self.num) + "/" + str(self.den)
+    
+    '''Now to add another fraction, we have to make sure they have a common denominator to do that. The best way to do that is to simply use the product of both fraction's denominators as the common denominator. so a/b + c/d will be ad/bd + cb/bd which will be equal to ad+cb/bd. This is what we have implemented in the __add__ method below'''
 
     def __add__(self, otherfraction):
         newnum = self.num * otherfraction.den + self.den * otherfraction.num
         newden = self.den * otherfraction.den
+        '''the below is just a way to get the greatest common divisor for each , in order to get the reduced version of the fraction when we add them'''
         common = gcd(newnum, newden)
         return Fraction(newnum // common, newden // common)
 
