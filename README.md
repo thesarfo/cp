@@ -20,4 +20,4 @@
 
 10. **"Connected components" or "Strongly connected components":** These terms often lead to graph-related algorithms like Tarjan's algorithm or Kosaraju's algorithm. 
 
-I got to RUNTIME ANALYSIS IN THE DSA BOOK
+<!-- I got to RUNTIME ANALYSIS IN THE DSA BOOK -->
