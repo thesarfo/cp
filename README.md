@@ -20,4 +20,6 @@
 
 10. **"Connected components" or "Strongly connected components":** These terms often lead to graph-related algorithms like Tarjan's algorithm or Kosaraju's algorithm. 
 
+11. **"Find the intersection":** This term suggests the use of the set data structure
+
 <!-- I got to RUNTIME ANALYSIS IN THE DSA BOOK -->
