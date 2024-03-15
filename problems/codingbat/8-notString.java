@@ -4,4 +4,4 @@ public String notString(String str) {
     } else{
       return "not " + str;
     }
-  }  
+  }
