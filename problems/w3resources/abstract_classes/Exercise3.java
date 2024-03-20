@@ -51,9 +51,6 @@ class SavingsAccount extends BankAccount {
 }
 
 
-// CurrentAccount.java
-// Subclass CurrentAccount
-
 class CurrentAccount extends BankAccount {
     public CurrentAccount(String accountNumber, double balance) {
         super(accountNumber, balance);
