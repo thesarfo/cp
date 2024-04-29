@@ -38,22 +38,3 @@ second = Node(4, first) # This one has a pointer to first
 # In list terms, the 'first' and 'second' will look like this
 [ 4, 3 ]
 ```
-
-This is how a simple node can be implemented in java
-```java
-public class Node {
-  	public String data;
-    public Node next;
-
-    public Node(String data){ // set the data and next values in the constructor
-      this.data = data;
-      this.next = null;
-    }
-
-	public static void main(String[] args) {
-    Node firstNode = new Node("I am a Node!");
-    System.out.println(firstNode.data);
-    System.out.println(firstNode.next);
-	}
-}
-```
