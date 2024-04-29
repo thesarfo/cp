@@ -57,3 +57,63 @@ public class Node {
 	}
 }
 ```
+
+Currently, when a Node is created, its next Node is set to null. However, we want to allow the next property to be updated so a sequence of nodes can be traversed and used in more complex data structures. For this, we will create a setter method to modify the this.next property.
+
+The method will be called .setNextNode() and take a Node as an argument, updating the next property appropriately.
+```java
+public class Node {
+
+  public String data;
+  public Node next;	
+
+  public Node(String data) {
+    this.data = data;
+    this.next = null;
+  }
+
+  public void setNextNode(Node node){
+    this.next = node;
+  }
+
+  public static void main(String[] args) {
+    Node firstNode = new Node("I am a Node!");
+    Node secondNode = new Node("I am the second Node!");
+
+    firstNode.setNextNode(secondNode);
+    System.out.println(firstNode.next.data);
+  }
+
+}
+```
+
+### Getting the Next Node
+While we could continue accessing the next node property directly it’s safer to have important variables only accessible through methods.
+Let’s go ahead and create a simple .getNextNode() method that will return the next node property.
+```java
+public class Node {
+
+  public String data;
+  private Node next;	
+
+  public Node(String data) {
+    this.data = data;
+    this.next = null;
+  }
+
+  public void setNextNode(Node node) {
+    this.next = node;
+  }
+
+  public Node getNextNode() {
+    return this.next;
+  }
+
+  public static void main(String[] args) {
+    Node firstNode = new Node("I am the first Node!");
+    Node secondNode = new Node("I am the second Node!");
+    firstNode.setNextNode(secondNode);
+    System.out.println(firstNode.getNextNode().data);
+  }
+}
+```
