@@ -1,6 +1,6 @@
 The array objects support the following attributes and methods:
 
-## Array Methods
+## Array Methods (Python)
 
 1. a.typecode - The typecode character used to create the array.
 
@@ -46,3 +46,27 @@ Python Data Types and Structures
 18. a.tolist() - Converts the array to a list.
 
 19. a.tounicode() - Convert an array to unicode string. The array type must be 'u' or else a ValueError is raised.
+
+## Implementing an array in Java
+
+```java
+import java.util.Arrays;
+
+public class Main {
+  public static void main(String[] args) {
+    // Declaring an array
+    int arr[] = {8, 5, 3, 10, 2, 1, 15, 20};
+
+    // Sorting the array
+    Arrays.sort(arr);
+
+    // Taking an element to search
+    int ele = 15;
+
+    // Using binarySearch() method to search "ele"
+    System.out.println(
+      ele + " presents at the index = " +
+      Arrays.binarySearch(arr, ele));
+  }
+}
+```
