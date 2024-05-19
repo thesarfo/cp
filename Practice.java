@@ -11,5 +11,10 @@ public class Practice{
     public static void main(String[] args) {
         int[] intArray = new int[100];
         System.out.println(intArray.length);
+
+Optional<Pork> pork = porkRepository.findById(porkId)
+    .orElseThrow(() -> new PorkException("pork no dey kwasia"));
     }
+
+
 }
