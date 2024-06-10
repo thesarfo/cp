@@ -1,3 +1,5 @@
+const n: number = parseInt(readline());
+
 function printIdentityMatrix(size: number) {
     for (let i = 0; i < size; i++) {
         let row = '';
