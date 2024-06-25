@@ -41,3 +41,50 @@ function removeHead():
     head = currentHead.getNextNode()    // Update the head to the next node
     return currentHead.getData()        // Return the data of the removed head node
 ```
+
+### Traversing a Linked List
+```java
+class Node<TreeNode>{
+    TreeNode data;
+    Node next;
+
+    Node(TreeNode data){
+        this.data = data;
+    }
+
+    void traverse(Node head){
+        Node curr = head;
+
+        while (curr != null){
+            print(curr.data);
+            curr = curr.next;
+        }
+    }
+
+    // using the traverse function
+    void main(){
+        traverse(head);
+    }
+}
+```
+
+### Deleting a node from a linked list
+```java
+void main(){
+    delete(head, 3);
+}
+
+void delete(Node head, int pos){
+    if (pos == 0){
+        head = head.next;
+        return;
+    }
+    Node currentNode = head;
+
+    for (int i = 0; i < pos - 1; i++){
+        currentNode = currentNode.next;
+    }
+    currentNode.next = currentNode.next.next;
+}
+```
+
