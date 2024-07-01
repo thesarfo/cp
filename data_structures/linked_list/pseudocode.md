@@ -69,6 +69,9 @@ class Node<TreeNode>{
 ```
 
 ### Deleting a node from a linked list
+1. check if the node to be deleted is the head
+2. traverse to the node before the target position
+3. remove the target node
 ```java
 void main(){
     delete(head, 3);
@@ -88,3 +91,31 @@ void delete(Node head, int pos){
 }
 ```
 
+
+### Removing all occurences of a value from a linked list
+1. skip all nodes at the beginning of the list that have the value of k
+2. if after the loop l is null, it means that the list was entirely composed of nodes with the value k, so you return null.
+3. we traverse through the list, and if the next value of the current node is not null, check if the next value is equal to k. remove the next value if it is equal to k, else, update the current nodes next pointer the next node
+
+```java
+ListNode<Integer> solution(ListNode<Integer> l, int k) {
+    while (l != null && l.value == k) {
+        l = l.next;
+    }
+    
+    if (l == null) {
+        return null;
+    }
+    
+    ListNode<Integer> current = l;
+    while (current.next != null) {
+        if (current.next.value == k) {
+            current.next = current.next.next;
+        } else {
+            current = current.next;
+        }
+    }
+    
+    return l;
+}
+```
