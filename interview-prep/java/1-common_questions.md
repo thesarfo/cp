@@ -77,3 +77,96 @@ System.out.print(example2.value); // prints 500
 17. What is a `Comparator` and `Comparable` in Java?
 - The similar in the sense that they specify how to sort particular collections of data.
 - A `Comparator` is an interface you would implement in your class, and you override the `compareTo` method
+
+18. What is the difference between an abstract class and an interface?
+An abstract class can have both abstract and non-abstract methods and can be extended by other classes, while an interface only contains abstract method declarations and can be implemented by classes.
+
+19. What is a thread in Java?
+A thread in Java is a lightweight unit of execution within a program. It allows concurrent execution of multiple tasks or activities, enabling better utilization of system resources.
+
+20. How do you create and start a thread in Java?
+To create and start a thread in Java, you can either extend the "Thread" class and override the "run()" method, or implement the "Runnable" interface and pass it to a new "Thread" object. Then call the "start()" method on the thread object to begin execution.
+
+21. What is synchronization in Java?
+Synchronization in Java is a technique used to control the access and execution of multiple threads to ensure that only one thread can access a shared resource or code block at a time.
+
+22. What is an exception in Java?
+An exception in Java is an event that occurs during the execution of a program, which disrupts the normal flow of instructions. It represents an error condition or an exceptional circumstance.
+
+23. What is the difference between checked and unchecked exceptions?
+Checked exceptions are checked at compile-time, and the programmer is required to handle or declare them using the "throws" keyword. Unchecked exceptions, on the other hand, are not checked at compile-time, and the programmer is not obligated to handle or declare them.
+
+24. How do you handle exceptions in Java?
+Exceptions in Java can be handled using try-catch blocks. The code that may throw an exception is placed inside the try block, and if an exception occurs, it is caught and handled in the catch block.
+
+25. What is the purpose of the "finally" block in exception handling?
+The "finally" block in Java is used to define a block of code that will be executed regardless of whether an exception occurs or not. It is often used to release resources or perform cleanup operations.
+
+26. What is the difference between the "throw" and "throws" keywords in Java?
+The "throw" keyword in Java is used to manually throw an exception, while the "throws" keyword is used in method declarations to specify that the method may throw certain types of exceptions.
+
+27. What is the difference between an ArrayList and a LinkedList?
+An ArrayList is implemented as a resizable array, allowing fast random access but slower insertion and removal of elements. A LinkedList is implemented as a doubly-linked list, allowing fast insertion and removal but slower random access.
+
+28. What is the difference between the "equals()" method and the "hashCode()" method?
+The "equals()" method is used to compare the equality of objects based on their values, while the "hashCode()" method is used to calculate a unique hash code value for an object, typically used for efficient retrieval in hash-based data structures like HashMaps.
+
+29. What is a lambda expression in Java?
+A lambda expression in Java is an anonymous function that can be used to simplify the syntax of functional interfaces. It allows for more concise and readable code, especially when working with functional programming constructs.
+
+30. What are the Java 8 features for functional programming?
+Java 8 introduced several features to support functional programming, including lambda expressions, functional interfaces, the Stream API for working with collections, and default methods in interfaces.
+
+31. What is the difference between an interface and an abstract class?
+An interface in Java can only declare method signatures and constants but cannot provide implementations, while an abstract class can have both method declarations and concrete implementations. A class can implement multiple interfaces but can inherit from only one abstract class.
+
+32. What is the difference between a BufferedReader and a Scanner?
+A BufferedReader in Java reads text from a character stream with efficient buffering, while a Scanner can parse different types of data from various sources such as files, strings, or standard input.
+
+33. What is the purpose of the "StringBuilder" class in Java?
+The "StringBuilder" class in Java is used to create and manipulate mutable sequences of characters. It is more efficient than concatenating strings using the "+" operator, as it avoids unnecessary object creations.
+
+34. What is the difference between the "Comparable" and "Comparator" interfaces?
+The "Comparable" interface is used to define a natural ordering for a class by implementing the "compareTo()" method. The "Comparator" interface, on the other hand, provides a way to define custom ordering by implementing the "compare()" method and is independent of the class being compared.
+
+35. What is the purpose of the "transient" keyword in Java?
+The "transient" keyword in Java is used to indicate that a variable should not be serialized during object serialization. When an object is deserialized, transient variables are set to their default values.
+
+36. What is the purpose of the "enum" keyword in Java?
+The "enum" keyword in Java is used to define an enumeration, which is a special type that represents a fixed set of constants. It allows for more structured and type-safe representation of predefined values.
+
+37. What is the purpose of the "try-with-resources" statement in Java?
+The "try-with-resources" statement in Java is used to automatically close resources that implement the "AutoCloseable" interface. It ensures that resources, such as file streams or database connections, are properly closed, even if an exception occurs.
+
+38. What is the difference between the pre-increment and post-increment operators?
+The pre-increment operator (++i) in Java increments the value of a variable and returns the incremented value, while the post-increment operator (i++) increments the value of a variable but returns the original value before the increment.
+
+39. What is the purpose of the "StringBuffer" class in Java?
+The "StringBuffer" class in Java is used to create and manipulate mutable sequences of characters, similar to the "StringBuilder" class. However, "StringBuffer" is synchronized and thread-safe, making it suitable for multi-threaded environments.
+
+40. What is the purpose of the "NullPointerException" in Java?
+The "NullPointerException" in Java is an exception that is thrown when a null reference is accessed and used where an object reference is expected. It indicates a programming error and should be handled or prevented to avoid unexpected crashes.
+
+41. What is the purpose of the "ArrayIndexOutOfBoundsException" in Java?
+The "ArrayIndexOutOfBoundsException" in Java is an exception that is thrown when an invalid index is used to access an array. It indicates that the index is either negative or exceeds the array's bounds.
+
+42. What is the purpose of the "StringBuilder" class in Java?
+The "StringBuilder" class in Java is used to create and manipulate mutable sequences of characters. It provides methods for appending, inserting, deleting, and modifying character sequences efficiently.
+
+43. What is the purpose of the "HashSet" class in Java?
+The "HashSet" class in Java is an implementation of the Set interface that stores unique elements in no particular order. It provides constant-time performance for basic operations like adding, removing, and checking for the presence of elements
+
+44. What is the purpose of the "HashMap" class in Java?
+The "HashMap" class in Java is an implementation of the Map interface that stores key-value pairs. It provides fast retrieval and insertion of elements based on their keys and allows for efficient mapping and lookup operations.
+
+45. What is the purpose of the "LinkedList" class in Java?
+The "LinkedList" class in Java is an implementation of the List interface that uses a doubly-linked list to store elements. It provides efficient insertion and removal of elements at both ends of the list but slower random access.
+
+46. What is the purpose of the "Comparator" interface in Java?
+The "Comparator" interface in Java is used to define custom ordering of objects. It provides a way to compare objects based on specific criteria other than their natural ordering defined by the "Comparable" interface.
+
+47. What is the purpose of the "Comparable" interface in Java?
+The "Comparable" interface in Java is used to define the natural ordering of objects of a class. It provides a method, "compareTo()", that allows objects to be compared and sorted based on their natural order.
+
+48. What is the purpose of the "throw" keyword in Java?
+The "throw" keyword in Java is used to manually throw an exception. It is typically used when a program encounters an error or exceptional situation that cannot be handled, and the control should be transferred to an exception handler.
