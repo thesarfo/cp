@@ -119,3 +119,161 @@ ListNode<Integer> solution(ListNode<Integer> l, int k) {
     return l;
 }
 ```
+
+# Rob Edwards 
+
+## Boundary Conditions - things you should consider when working with data structures
+
+1. Empty Data Structure
+2. Single element in the data structure
+3. Adding / Removing from the beginning of the data structure
+4. Adding / Removing from the end of the data structure
+5. Working in the middle of the data structure
+
+
+### Adding to the first/head of a linked list
+1. create a new node
+2. make node.next point to the same node that the head is pointing to
+3. make our head point to our new node
+```java
+public void addFirst(E obj){
+    Node<E> node = new Node<E>(obj);
+    node.next = head;
+
+    head = node;
+    currentSize++; //keep track of the size of the linked list by incrementing or decrementing the size
+
+
+}
+```
+
+### Adding to the end of a linked list
+1. we introduce a dummy/temp node which points to the head of the linked list.
+2. we know the temp node is not the last node, if its `.next` is not null, i.e it points to another node.
+3. so we basically initialize a loop that, while the `.next` of the temp node is not null, we want to make temp point to the next node.
+4. If we get to a point where `temp.next` is null, we know that we have gotten to the end of the list.
+5. we can then make the last node, point to our new node
+```java
+public void addLast(E obj){
+    Node<E> temp = head;
+    Node<E> newNode = new Node<E>(obj);
+
+    while(temp.next != null){
+        temp = temp.next;
+    }
+    temp.next = newNode;
+}
+```
+6. in the case where the list is empty, head points to null. therefore we will get a null pointer exception if we try to access temp.next
+7. So, we first need to check, if the list is empty, and then if it is, make our head point to our new node.
+```java
+public void addLast(E obj){
+    if (head == null){
+        head = newNode;
+        currentSize++;
+        return;
+    }
+    Node<E> temp = head;
+    Node<E> newNode = new Node<E>(obj);
+
+    while(temp.next != null){
+        temp = temp.next;
+    }
+    temp.next = newNode;
+}
+```
+
+The above implementation is linear 0(n). the loop runs for the number of times as the number of elements in the list. To optimize this solution, perhaps we can use the currentSize variable to our advantage. What if we had a pointer called `tail` that points to the last element of our list. And whenever we want to update the last element of the linked list we just call `tail.next`. That is completely doable
+```java
+public void addLast(E obj){
+    Node<E> newNode = new Node<E> (obj);
+    if (head == null){
+        head = tail = node;
+        currentSize++;
+        return;
+    }
+
+    tail.next = newNode;
+    tail = newNode;
+    currentSize++;
+    return;
+
+}
+```
+
+
+### Removing from the head/first node of a linked list (and return the data in the removed node)
+1. We know a node is our first node if the head points to it.
+2. to remove our first node, we simply make head point to the second node. therefore making the first node garbage collected. `head = head.next`
+3. But in the case of an empty list, the head points to null, because the list is empty. Therefore making `head = head.next` will simply lead to a null pointer exception.
+```java
+public E removeFirst(){
+    if (head == null){
+        return null;
+    }
+
+}
+```
+4. But in the case the list isn't empty, we need to remember what the data of that node is. so we need to store that in a temporary variable. 
+
+
+```java
+public E removeFirst(){
+    if (head == null){
+        return null;
+    }
+    E temp = head.data;
+
+}
+```
+
+5. In the case where there is just one element in the list, we need to update both the head and tail pointers in the list.
+```java
+public E removeFirst(){
+    if (head == null){
+        return null;
+    }
+    E temp = head.data;
+
+    if (head == tail){
+        head = tail = null;
+    } else{
+        head = head.next;
+    }
+    currentSize--;
+
+    return temp;
+
+}
+```
+
+### Removing from the tail/last node of a linked list
+Certainly, we can just update the tail pointer to point to the second last node in the linked list. But in a singly linked list, there is no way to actually move from the tail backwards. So we have to start from the front of the list.
+
+How do we go about this, we introduce two dummy variables/pointers. `previous` and `current`. Before we start iterating through the list, `previous` points to null, and `current` points to the head of the list. Now as we start iterating, we will move `current` to `current.next` and `previous` to where `current` used to be. We do that until we get to the end of the list. We know we have gotten to the end of the list when `current.next` is equal to null, or `current.next` is equal to `tail`. This means that `previous` is right before `current`. So all we have to do is to just make `previous.next` equal to null. that will delete the last element in the list.
+
+```java
+public E removeLast(){
+    if (head == null){
+        return null;
+    }
+
+    // single element
+    if (head == tail){
+        return removeFirst();
+    }
+
+    Node<E> current = head;
+    Node<E> previous = null;
+
+    while(current.next != null){
+        previous = current;
+        current = current.next;
+    }
+    previous.next = null;
+    tail = previous;
+    currentSize++;
+    return current.data;
+
+}
+```

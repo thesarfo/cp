@@ -31,6 +31,28 @@ public class LinkedList {
     }
   }
 
+  /* insert at the end of a linked list - codechef */
+  public void insertAtEnd(int val) {
+
+    node newnode = new node(val);
+
+    if (this.head == null) {
+      // The list is empty, thus we just need to assign head to the only element
+      this.head = newnode;
+
+    } else {
+      // Iterating towards the end of the list
+      node current = this.head;
+      while (current.next != null) {
+        current = current.next;
+      }
+
+      // Updating the next pointer of the this element
+      current.next = newnode;
+
+    }
+  }
+
   /* remove the head of the linked list */
   public String removeHead(){
     Node removedHead = this.head;
@@ -53,7 +75,6 @@ public class LinkedList {
     System.out.println(output);
     return output;
   }
-
 
   public static void main(String []args) {
     LinkedList seasons = new LinkedList();
