@@ -13,3 +13,21 @@ public boolean isPalindrome(String str) {
   return str.equals(reversed);
 }
 ```
+
+## 2. Anagrams
+Two strings are anagrams if they contain the same characters in different orders. This is how to check: The easiest thing to do is to break apart a string into an array, sort, and join back to a string again. After joining, we compare if they're equal; if yes, then it is a valid anagram.
+
+```java
+public boolean isAnagram(String str1, String str2) {
+  char[] charArray1 = str1.toCharArray();
+  char[] charArray2 = str2.toCharArray();
+  Arrays.sort(charArray1);
+  Arrays.sort(charArray2);
+  return Arrays.equals(charArray1, charArray2);
+}
+```
+
+```python
+def isAnagram(str1, str2):
+    return Counter(str1) == Counter(str2)
+```
