@@ -127,13 +127,15 @@
 112 . How do you compare two arrays?
 113 . What is an enum?
 114 . Can you use a switch statement around an enum?
-115 . What are variable arguments or varargs?
+115 . What are variable arguments or varargs? 
+
 116 . What are asserts used for?
 117 . When should asserts be used?
 118 . What is garbage collection?
 119 . Can you explain garbage collection with an example?
 120 . When is garbage collection run?
 121 . What are best practices on garbage collection?
+
 122 . What are initialization blocks?
 123 . What is a static initializer?
 124 . What is an instance initializer block?
