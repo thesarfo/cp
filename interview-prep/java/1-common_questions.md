@@ -162,11 +162,18 @@ The "HashMap" class in Java is an implementation of the Map interface that store
 45. What is the purpose of the "LinkedList" class in Java?
 The "LinkedList" class in Java is an implementation of the List interface that uses a doubly-linked list to store elements. It provides efficient insertion and removal of elements at both ends of the list but slower random access.
 
-46. What is the purpose of the "Comparator" interface in Java?
-The "Comparator" interface in Java is used to define custom ordering of objects. It provides a way to compare objects based on specific criteria other than their natural ordering defined by the "Comparable" interface.
+46. What is the purpose of the "Comparable" interface in Java?
+The "Comparable" interface in Java is used to define the natural ordering of objects of a class. It provides a method, "compareTo()", that allows objects to be compared and sorted based on their natural order. 
 
-47. What is the purpose of the "Comparable" interface in Java?
-The "Comparable" interface in Java is used to define the natural ordering of objects of a class. It provides a method, "compareTo()", that allows objects to be compared and sorted based on their natural order.
+47. What is the purpose of the "Comparator" interface in Java?
+The "Comparator" interface in Java is used to define custom ordering of objects. It provides a way to compare objects based on specific criteria other than their natural ordering defined by the "Comparable" interface. 
+
+* We need the Comparable and Comparator interfaces because java cannot sort your custom objects as it would to the objects of primitive types.
+* When you implement the Comparable interface, you need to override its "compareTo()" method and provide an implementation of it.
+* When you need to sort your class that implements a Comparable, you can define a Comparator class for the class and then define the custom value with which you want to sort by.
+* The Comparator class also has a compare method that you can use to define the custom values you want to sort by.
 
 48. What is the purpose of the "throw" keyword in Java?
 The "throw" keyword in Java is used to manually throw an exception. It is typically used when a program encounters an error or exceptional situation that cannot be handled, and the control should be transferred to an exception handler.
+
+49. Association depicts the relationship between two classes. It has two types; Aggregation and Composition. Aggregation relationship has a weak association or loose coupling - one object can exist without the other, whilst Composition relationship has a strong association or tight coupling - one object can exist without the other. 
