@@ -177,3 +177,36 @@ The "Comparator" interface in Java is used to define custom ordering of objects.
 The "throw" keyword in Java is used to manually throw an exception. It is typically used when a program encounters an error or exceptional situation that cannot be handled, and the control should be transferred to an exception handler.
 
 49. Association depicts the relationship between two classes. It has two types; Aggregation and Composition. Aggregation relationship has a weak association or loose coupling - one object can exist without the other, whilst Composition relationship has a strong association or tight coupling - one object can exist without the other. 
+
+50. Shallow and Deep Comparison: The Shallow comparison compares equality of memory locations("=="). While the Deep comparison compares equality of state(".equals()")
+
+#### Equals and HashCode Contract
+* This contract says that if two Objects are equal according to the Equals(Object o) method, then the hash code for both the object must be the same(integer value)
+* It is not necessary that if you have same hash code for 2 object means those two objects are equal. This is collision. Better hash functions prevents this.
+* Whenever it is invoked on the same object more than once during an execution of a Java application, the hashCode must consistently return the same integer.
+
+##### how to implement the `equals` method.
+
+1. check if the object is null, or incase it not an object of the specified class -> return false if otherwise.
+2. check if the object is equal to the specified class -> if it is, return true
+3. Create an object of the specified class and cast it to the object in the method signature. return true if the object id, is equal to the main class's id.
+
+```java
+public boolean equals(Object o){
+    if (o == null || getClass() != o.getClass()){ // step 1
+        return false; // they are not equal
+    }
+    if (o == this || getClass() != o.getClass()){ // step 2
+        return true;
+    }
+    Employee e = (Employee) o;
+    return (this.getId() == e.getId()); // step 3
+}
+```
+
+#### implementing a hashcode method
+```java
+public int hashCode(){
+    return getId(); // this is probably the most simple way
+}
+```
