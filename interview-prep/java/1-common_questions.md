@@ -210,3 +210,21 @@ public int hashCode(){
     return getId(); // this is probably the most simple way
 }
 ```
+
+51. What is Garbage Collection in Java and what are its advantages
+Garbage collection in java is an automatic process of looking at heap memory, identifying which objects are in use and which are not and deleting the unused objects. An in use object, or a referenced object, means that some part of your program still maintains a pointer to that object. An unused object or unreferenced object is no longer referenced by any part of your program. So the memory used by an unreferenced object can be reclaimed. Main advantage of automatic garbage collection in java is that it removes the burden of manual memory allocation/deallocation from us so that we can focus on problem solving.
+
+Whenever an object is created, it is always stored in the Heap Space and Stack memory contains the reference to it. 
+
+* Garbage collection is always done in the **heap**
+* The JVM controls controls the Garbage COllector. The JVM runs the garbage collector when it realizes that the memory is running low.
+
+52. Explain the Collection Hierarchy
+`java.util.Collection` is the root of the java collection framework and most of the collections in Java are inherited from this interface except **Map Interface**.
+
+* The 3 basic interfaces that implement the Collection interface are the List, Queue and Set.
+
+* **List**: Contains ordered elements, may include duplicates, supports index based search and random access, but elements can be easily inserted regardless of the position
+* **Set**: Doesn't define an order for the elements - so index based search is not supported. It doesnt contain duplicates.
+* **Queue**: follows a FIFO approach. Elements adds at rear end and removes from the front end.
+* **Map**: Represents a key value pair. Map interface does not implement the Collection. It can only contain a unique key. it can have duplicate values.
