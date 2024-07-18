@@ -228,3 +228,4 @@ Whenever an object is created, it is always stored in the Heap Space and Stack m
 * **Set**: Doesn't define an order for the elements - so index based search is not supported. It doesnt contain duplicates.
 * **Queue**: follows a FIFO approach. Elements adds at rear end and removes from the front end.
 * **Map**: Represents a key value pair. Map interface does not implement the Collection. It can only contain a unique key. it can have duplicate values.
+
