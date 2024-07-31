@@ -33,7 +33,9 @@ When we call the function `more(3)`:
 4. We keep doing that until the base case becomes true, only then do we return/break the functions executions...therefore printing `n` on each function exit.
 
 This is how the recursive call looks like visually
+<br>
 <img src="../images/recursion.png">
+<br>
 
 This is the basic idea of how recursion works
 
