@@ -1,6 +1,8 @@
 ### Microservice Architecture
 Well, a microservice architecture enables large teams to build scalable applications that are composed of many loosely coupled services.
 
+Microservices are independently releasable services that are modeled around a business domain. A service encapsulates functionality and makes it accessible to other services via networks - you construct a more complex system from these building blocks. One microservice might represent Accounts, another Cards, and yet another Loans, but together they might constitute an entire bank system.
+
 Each microservice has its own database. For example, product service has its own database, inventory service has its own database, and stock service has its own database. 
 
 In the microservices project, all the microservices are loosely coupled. So loosely coupled, meaning all the services in a microservices project are independent of each other and each microservice should be developed independently and each microservice should be deployed independently and each microservice should be scaled independently. 
