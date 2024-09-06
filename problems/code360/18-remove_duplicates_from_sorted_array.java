@@ -1,4 +1,3 @@
-
 public class Solution {
     public static int removeDuplicates(int[] arr,int n) {
         // Write your code here.
