@@ -42,3 +42,65 @@ for(i = 1 -> n){
 	}
 }
 ```
+
+3. **Optimal Approach**: We can use the **sum of first `n` natural numbers** to solve this problem. The formula for summing up the first `n` natural numbers is `n * (n + 1) / 2`. So what we do is that we sum up all the natural numbers in the range of the array. Then, we create another sum, which sums up all the elements in the actual array. 
+
+Then we compare both. The difference between the two summations is our missing number.
+
+A pseudocode would look like below
+```pseudocode
+sum = n * (n + 1) / 2;
+s2 = 0
+
+for (i = 0 -> n){
+	s2 += arr[i];
+}
+return sum - s2
+```
+
+
+**Another Optimal Approach is to Use the XOR operator**
+
+One concept of **XOR** is that if you XOR the same number, the result of that is always `0`. And if you XOR `0` with any number, the result if the number itself
+
+First we will find the XOR of the first `n` natural numbers. Then, we find the XOR of the elements in the array. Finally, we find the XOR of both. The result will be our missing number. 
+
+This is because `xor1 = 1 ^ 2 ^ 3 ^ 4 ^ 5` and `xor2 = 1 ^ 2 ^ 3 ^ 5`. Now, when we perform a `xor1 ^ xor2`, it computes as follows...
+
+* 1 ^ 1 
+* 2 ^ 2
+* 3 // because there is no 3 in our array, we dont know what to xor it with, so it stays alone
+* 4 ^ 4
+* 5 ^ 5
+
+Now, we know the XOR of a number and itself is `0`. So all the operations above are `0` except for `3`. So `3` is our missing number.
+
+Below is a pseudocode
+```pseudocode
+xor1 = 0
+for(i = 1 -> n){
+	xor1 = xor1 ^ i;
+}
+
+xor2 = 0;
+for(i = 0 -> n - 1){
+	xor2 = xor2 ^ arr[i];
+}
+
+return xor1 ^ xor2
+
+```
+
+However, instead of calculating the XOR of the first `n` numbers and the XOR of the elements in the array separately, we can do it in one single pass, by XOR-ing both the index and the array element at the same time
+
+Below is a pseudocode
+```pseudocode
+int xor1 = 0, xor2 = 0;
+
+int n = arr.size();
+for(int i = 0; i < n; i++){
+	xor2 = xor2 ^ a[i];
+	xor1 = xor1 ^ (i + 1);
+}
+return xor1 ^ xor2
+```
