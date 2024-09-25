@@ -22,4 +22,6 @@
 
 11. **"Find the intersection":** This term suggests the use of the set data structure
 
+13. **Counting, Occurrences**: These terms can be solved with Hashing
+
 <!-- I got to RUNTIME ANALYSIS IN THE DSA BOOK -->
