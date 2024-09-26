@@ -3,6 +3,7 @@
 You are given an array, and you need to find the element that appears more than `n/2` times, where `n` is the length of the array. If such an element exists, it's referred to as the **majority element**. For example, if `n = 8`, an element must appear more than `4` times to be considered the majority element.
 
 [Leetcode 169](https://leetcode.com/problems/majority-element/description/)
+[Leetcode 229](https://leetcode.com/problems/majority-element-ii/description/)
 
 #### Example:
 Given the array `[2, 2, 3, 3, 1, 2, 2]`:
