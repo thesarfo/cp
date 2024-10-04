@@ -212,3 +212,5 @@ private void reverseRow(int[] row) {
 }
 
 ```
+
+The TC of the transposition is 0(n / 2 * n / 2) and the reverse row is 0(n / 2). And it doesnt use any extra space.
