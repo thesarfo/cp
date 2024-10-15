@@ -1,6 +1,8 @@
 You are given an array of integers and your task is to find 4 different indexes such that if you sum up the numbers at those indexes, you get the target. However, the numbers should be unique. i.e `[i != j != k != l]`
 
-For instance, given the array `[1, 0, -1, 0, -2, 2]` and a `target = 0`
+For instance, given the array `[1, 0, -1, 0, -2, 2]` and a `target = 0`, a valid output would be all unique sets of four numbers that sum to `0`.
+
+[LeetCode 18](https://leetcode.com/problems/4sum)
 
 
 1. **Brute Force**: We can try out all the possible quads and whichever quad adds up to our target, we store them in a set - since those are our answers
