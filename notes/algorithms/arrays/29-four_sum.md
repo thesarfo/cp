@@ -128,3 +128,5 @@ public class Solution {
     }
 }
 ```
+
+The TC is 0(n3) and SC is 0(n of quads).
