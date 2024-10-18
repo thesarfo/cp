@@ -2,6 +2,8 @@ You are given an array of `n` integers with values also in the range `[1, n]` bo
 
 For instance, given the array `[3, 1, 2, 5, 3]` the result will be `[3, 4]`
 
+[Leetcode 645](https://leetcode.com/problems/set-mismatch/description/) 
+
 1. **Brute Force Solution**: For each number between 1 to `n`, we will try to count the occurrence in the given array using **linear search**. And the element with occurrence as 2 will be the repeating number and the number with 0 occurrences will be the missing number.
 
 So, we start with a loop from `1` to `n`. For each integer `i`, we will count its occurrence in the given array using linear search. We will store those two elements that have occurrence of `2` and `0`. Finally, we will return the elements.
@@ -82,57 +84,56 @@ In the input array, the numbers range from `1 to n`. One number is missing (`y`)
 #### Step 1: Forming Equations
 **Equation 1 (Sum of Numbers)**:  
 The sum of the first `n` natural numbers is given by the formula:
-\[
-sN = \frac{n \times (n + 1)}{2}
-\]
+$$
+S_N = \frac{n \times (n + 1)}{2}
+$$
 Let `s` be the sum of all elements in the input array. Since one number is missing and another is repeated:
-\[
-s - sN = x - y \quad \text{(Equation 1)}
-\]
+$$
+S - S_N = x - y \quad \text{(Equation 1)}
+$$
 
 **Equation 2 (Sum of Squares of Numbers)**:  
 Similarly, the sum of the squares of the first `n` natural numbers is:
-\[
-s2N = \frac{n \times (n + 1) \times (2n + 1)}{6}
-\]
+$$
+S_{2N} = \frac{n \times (n + 1) \times (2n + 1)}{6}
+$$
 Let `s2` be the sum of the squares of all elements in the array. Again, due to the missing and repeating numbers:
-\[
-s2 - s2N = x^2 - y^2 \quad \text{(Equation 2)}
-\]
+$$
+S_2 - S_{2N} = x^2 - y^2 \quad \text{(Equation 2)}
+$$
 
 #### Step 2: Solving the Equations
 From **Equation 2**, we can factor the right-hand side:
-\[
+$$
 x^2 - y^2 = (x - y)(x + y)
-\]
+$$
 So,
-\[
-s2 - s2N = (x - y)(x + y)
-\]
+$$
+S_2 - S_{2N} = (x - y)(x + y)
+$$
 From **Equation 1**, we know that `x - y = s - sN`. Let’s substitute this into **Equation 2**:
-\[
-s2 - s2N = (s - sN) \times (x + y)
-\]
+$$
+S_2 - S_{2N} = (S - S_N) \times (x + y)
+$$
 Now, solve for `x + y`:
-\[
-x + y = \frac{s2 - s2N}{s - sN}
-\]
+$$
+x + y = \frac{S_2 - S_{2N}}{S - S_N}
+$$
 
 #### Step 3: Finding x and y
 Now that we have both:
-- `x - y = s - sN` (from **Equation 1**)
-- `x + y = \frac{s2 - s2N}{s - sN}` (from **Equation 2**)
+- $x - y = S - S_N$ (from **Equation 1**)
+- $x + y = \frac{S_2 - S_{2N}}{S - S_N}$ (from **Equation 2**)
 
 We can solve for `x` and `y` using substitution:
-\[
+$$
 x = \frac{(x - y) + (x + y)}{2}
-\]
-\[
+$$
+$$
 y = x - (x - y)
-\]
+$$
 
-#### Step 4: Code Implementation
-Here's the Java code to implement this approach:
+Below is a code implementation
 
 ```java
 public static int[] findMissingRepeatingNumbers(int[] arr) {
