@@ -24,4 +24,12 @@
 
 13. **Counting, Occurrences**: These terms can be solved with Hashing
 
+14. **"Solve with O(log n) runtime"**: Binary search
+
+15. **"Sorted Array"**: Two pointers
+
+16. **"Subarray/Substring"**: Sliding Window
+
+17. **"Detect cycle"**: Fast and Slow pointers
+
 <!-- I got to RUNTIME ANALYSIS IN THE DSA BOOK -->
