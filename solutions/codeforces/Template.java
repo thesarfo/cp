@@ -1,18 +1,14 @@
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class Main {
+public class Template {
 
     public static void main(String[] args) throws IOException {
         try {
             FastReader x = new FastReader();
             FastWriter out = new FastWriter();
-            int MOD = (int) (1e9 + 7);
-            int testcases = x.nextInt();
-
-            while (testcases-- > 0) {
-                // your code here
-            }
+            
+            // code here
 
             out.close();
         } catch (Exception e) {
