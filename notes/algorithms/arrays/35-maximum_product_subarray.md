@@ -65,5 +65,7 @@ public static int maxProductSubArray(int[] arr) {
             ans = Math.max(ans, Math.max(pre, suff));
         }
         return ans;
-    }
+}
 ```
+
+The TC of this is O(n) while the S of this is O(n)
