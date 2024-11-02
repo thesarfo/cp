@@ -1,7 +1,3 @@
-Here’s a refined version of your notes with improved clarity and flow:
-
----
-
 ### Problem: Move Zeroes to the End
 You are given an array `[1, 0, 2, 3, 2, 0, 0, 4, 5, 1]`. Your goal is to move all zeros to the end of the array, such that the new array becomes `[1, 2, 3, 2, 4, 5, 1, 0, 0, 0]`. All non-zero elements should retain their original order.
 
