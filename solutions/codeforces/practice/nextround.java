@@ -8,10 +8,14 @@ public class nextround {
         sc.nextLine();
         int count = 0;
 
-        while (n-- > 0) {
-            int i = sc.nextInt();
-            if((i > 0) || (i > k)){
-                count += 1;
+        int[] scores = new int[n];
+        for (int i = 0; i < n; i++) {
+            scores[i] = sc.nextInt();
+        }
+        int thresholdScore = scores[k - 1];
+        for (int score : scores) {
+            if (score >= thresholdScore && score > 0) {
+                count++;
             }
         }
         System.out.println(count);
