@@ -1,6 +1,7 @@
 To find the **upper bound** for a given element `x` in a sorted array `arr`, we follow a similar approach to finding the lower bound. However, the **upper bound** is defined as the first index `i` where `(arr[i] > x)`. If no such index exists, the upper bound should return `n` (the size of the array). Here's the extension to your notes:
 
----
+[Practice Problem](https://www.geeksforgeeks.org/problems/ceil-the-floor2802/1)
+
 
 ### **1. Brute Force Approach - Linear Search**
 In the brute force approach, we traverse the array from the beginning and find the first index \( i \) such that \( arr[i] > x \).
@@ -17,9 +18,9 @@ public static int upperBound(int[] arr, int n, int x){
 }
 ```
 
-#### **Time Complexity**: \( O(n) \)
+#### **Time Complexity**: `O(n)`
 
-#### **Space Complexity**: \( O(1) \)
+#### **Space Complexity**: `O(1)`
 
 ---
 
@@ -54,9 +55,9 @@ public static int upperBound(int[] arr, int n, int x){
 }
 ```
 
-#### **Time Complexity**: \( O(\log n) \)
+#### **Time Complexity**: `O(log n)`
 
-#### **Space Complexity**: \( O(1) \)
+#### **Space Complexity**: `O(1)`
 
 ---
 
