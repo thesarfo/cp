@@ -2,7 +2,8 @@ The problem is that: Given a sorted array of `n` integers, and an integer `x`, w
 
 [Practice problem](https://www.naukri.com/code360/problems/lower-bound_8165382) <br>
 [Practice Problem](https://www.geeksforgeeks.org/problems/floor-in-a-sorted-array-1587115620/1) <br>
-[Practice Problem](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
+[Practice Problem](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) <br>
+[Practice Problem](https://www.geeksforgeeks.org/problems/ceil-the-floor2802/1)
 
 This problem effectively points to the Binary Search Algorithm - where we determine the appropriate half to eliminate, thereby reducing the search space by half. It does this by determining a specific condition that ensures that the target is not present in that half.
 
