@@ -4,7 +4,9 @@ You are given a sentence and a search word. Your task is to find the first word 
 
 * **Sentence structure**: The sentence consists of words separated by a single space. So, we can break the sentence into a list of words and check each word to see fi it starts with the `searchWord`.
 
-[Leetcode Problem](https://leetcode.com/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence/description)
+[Leetcode 1455](https://leetcode.com/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence/description)
+[Leetcode 2255](https://leetcode.com/problems/count-prefixes-of-a-given-string/)
+[Leetcode 2185](https://leetcode.com/problems/counting-words-with-a-given-prefix/description/)
 
 ### Plan
 
