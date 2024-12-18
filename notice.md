@@ -32,4 +32,6 @@
 
 17. **"Detect cycle"**: Fast and Slow pointers
 
+18. If you notice a pattern where the answer is valid until a certain point and invalid after a certain point, you can use a binary search
+
 <!-- I got to RUNTIME ANALYSIS IN THE DSA BOOK -->
