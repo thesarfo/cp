@@ -78,3 +78,9 @@ vector<int> getSecondOrderElements(int n, vector<int> a) {
     return {slargest, ssmallest};
 }
 ```
+
+```cpp fold title:test.cpp
+int main(){
+	printf("hello world");
+}
+```
