@@ -4,16 +4,20 @@ You are given an array containing elements that appear twice in the array except
 
 1. **Brute Force Approach**: You will pick each element, and perform another linear search in the array and find if that number appears again in the array. 0(n * n)
 
-```pseudocode
-for(i = 0 -> n){
-	num = arr[i];
-	count = 0;
-	for(j = 0 -> n){
-		if(arr[j] == num){
-			count++;
-		}
-	}
-	if(count == 1) return num;
+```java
+class Solution {
+    public int singleNumber(int[] nums) {
+        for(int i = 0; i < nums.length; i++){
+            int num = nums[i];
+            int count = 0;
+            for(int j = 0; j < nums.length; j++){
+                if(nums[j] == num) count++;
+            }
+            if(count == 1) return num;
+        }
+        return -1;
+
+    }
 }
 ```
 
@@ -38,6 +42,27 @@ for each (entry in frequency_map) {
     }
 }
 
+```
+
+Below is a java implementation 
+
+```java
+class Solution {
+    public int singleNumber(int[] nums) {
+        Map<Integer, Integer> mpp = new HashMap<>();
+
+        for(int num : nums){
+            mpp.put(num, mpp.getOrDefault(num, 0) + 1);
+        }
+
+        for(Map.Entry<Integer, Integer> entry : mpp.entrySet()){
+            if(entry.getValue() == 1){
+                return entry.getKey();
+            }
+        }
+        return -1;
+    }
+}
 ```
 
 - **Time Complexity**: `O(n)`. We traverse the array once to populate the map and then traverse the map to find the unique element.
