@@ -1,2 +1,10 @@
 .idea/
 .out/
+.obsidian/
+notes/.DS_Store
+notes/algorithms/algorithms.iml
+notes/data_structures/data_structures.iml
+solutions/atcoder/atcoder.iml
+.DS_Store
+solutions/cses/cses.iml
+solutions/solutions.iml
