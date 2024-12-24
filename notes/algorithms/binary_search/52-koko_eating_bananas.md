@@ -32,41 +32,41 @@ The minimum `k` that Koko can eat per hour lies between `1` (the lowest possible
 Below is a code implementation - This gives us a TLE (Time Limit Exceeded)
 
 ```java
-import java.util.*;
-
-public class KokoEatingBananas {
-    public static int findMax(int[] piles) {
-        int maxi = Integer.MIN_VALUE;
-        for (int i = 0; i < piles.length; i++) {
-            maxi = Math.max(maxi, piles[i]);
+class Solution {
+    public int minEatingSpeed(int[] piles, int h) {
+        // Step 1: Find the maximum number of bananas in a single pile
+        // This will determine the upper limit of Koko's eating speed
+        int max = 0;
+        for (int p : piles) {
+            max = Math.max(max, p);
         }
-        return maxi;
-    }
 
-    public static int calculateTotalHours(int[] piles, int hourly) {
-        int totalH = 0;
-        for (int i = 0; i < piles.length; i++) {
-            totalH += Math.ceil((double)(piles[i]) / (double)(hourly));
-        }
-        return totalH;
-    }
-
-    public static int minimumRateToEatBananas(int[] piles, int h) {
-        int maxi = findMax(piles);
-        for (int i = 1; i <= maxi; i++) {
-            int reqTime = calculateTotalHours(piles, i);
-            if (reqTime <= h) {
-                return i;
+        // Step 2: Perform a linear search to find the minimum eating speed
+        // Start from 1 banana per hour and go up to the maximum pile size
+        for (int k = 1; k < max; k++) {
+            // Calculate the total hours Koko needs to eat all bananas at speed k
+            int requiredTime = calculateTotalHours(piles, k);
+            // If Koko can eat all bananas within h hours at speed k, return k
+            if (requiredTime <= h) {
+                return k;
             }
         }
-        return maxi;  // return max pile size if no valid solution found
+
+        // If no speed from 1 to max - 1 satisfies the condition, return max
+        // This is the worst-case scenario where Koko eats the largest pile in one hour
+        return max;
     }
 
-    public static void main(String[] args) {
-        int[] piles = {7, 15, 6, 3};
-        int h = 8;
-        int ans = minimumRateToEatBananas(piles, h);
-        System.out.println("Koko should eat at least " + ans + " bananas/hr.");
+    // Helper method to calculate the total hours needed for Koko to eat all bananas
+    // at a given hourly speed
+    public int calculateTotalHours(int[] piles, int hourly) {
+        int totalH = 0; // Total hours required
+        for (int i = 0; i < piles.length; i++) {
+            // Divide each pile size by the eating speed and round up to the nearest hour
+            // Since Koko eats in whole hours, use Math.ceil
+            totalH += Math.ceil((double) piles[i] / (double) hourly);
+        }
+        return totalH; // Return the total hours
     }
 }
 ```
@@ -88,38 +88,49 @@ public class KokoEatingBananas {
 ```java
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
-        int low = 1, high = findMax(piles);
-        int answer = high;  
-        
-        while (low <= high) {
-            int mid = (low + high) / 2;
+        // Step 1: Find the maximum number of bananas in a single pile
+        // This determines the upper limit for Koko's eating speed
+        int max = 0;
+        for (int p : piles) {
+            max = Math.max(max, p);
+        }
+
+        // Step 2: Initialize the binary search bounds
+        // 'low' is the minimum possible speed (1 banana per hour)
+        // 'high' is the maximum possible speed (size of the largest pile)
+        int low = 1, high = max;
+
+        // Step 3: Binary search to find the minimum eating speed
+        while (low < high) {
+            // Calculate the midpoint (potential eating speed)
+            int mid = low + (high - low) / 2;
+
+            // Calculate the total hours required to eat all bananas at speed 'mid'
             int totalH = calculateTotalHours(piles, mid);
-            
+
+            // If the total hours are less than or equal to h, try a slower speed
             if (totalH <= h) {
-                answer = mid;  
-                high = mid - 1;  
+                high = mid; // Reduce the upper bound to narrow the search
             } else {
-                low = mid + 1;
+                // Otherwise, try a faster speed
+                low = mid + 1; // Increase the lower bound to narrow the search
             }
         }
-        
-        return answer; 
+
+        // Step 4: Return the minimum eating speed (low == high at this point)
+        return low;
     }
 
-    public int findMax(int[] v) {
-        int maxi = Integer.MIN_VALUE;
-        for (int i = 0; i < v.length; i++) {
-            maxi = Math.max(maxi, v[i]);
+    // Helper method to calculate the total hours needed for Koko to eat all bananas
+    // at a given hourly speed
+    public int calculateTotalHours(int[] piles, int hourly) {
+        int totalH = 0; // Initialize total hours
+        for (int i = 0; i < piles.length; i++) {
+            // Divide each pile by the eating speed and round up to the nearest hour
+            // Since Koko eats in whole hours, use Math.ceil
+            totalH += Math.ceil((double) piles[i] / (double) hourly);
         }
-        return maxi;
-    }
-
-    public int calculateTotalHours(int[] v, int hourly) {
-        int totalH = 0;
-        for (int i = 0; i < v.length; i++) {
-            totalH += Math.ceil((double)(v[i]) / (double)(hourly));
-        }
-        return totalH;
+        return totalH; // Return the total hours
     }
 }
 ```
