@@ -64,7 +64,7 @@ We will stick to the same basic approach, but instead of storing elements in a s
 #### Algorithm:
 
 1. **Identify Required Indices**:
-   - Let `index2 = (n1+n2)/2` and `index1 = ((n1+n2)/2)-1`.
+   - Let `midIndex2 = (n1+n2)/2` and `midIndex1 = ((n1+n2)/2)-1`.
    - Initialize a counter called `count` to 0.
 
 2. **Set Up Pointers**:
@@ -74,13 +74,13 @@ We will stick to the same basic approach, but instead of storing elements in a s
    - Use a while loop (`while(i < nums1.length && j < nums2.length)`):
      - Compare `nums1[i]` and `nums2[j]`.
      - Select the smaller element, increment the respective pointer (`i` or `j`), and increment `count`.
-     - Check if `count` matches `index1` or `index2`. If so, store the respective element.
+     - Check if `count` matches `midIndex1` or `midIndex2`. If so, store the respective element.
 
 4. **Handle Remaining Elements**:
-   - After the main loop, handle leftover elements in `nums1` or `nums2`. Continue checking `count` for `index1` or `index2` and increment accordingly.
+   - After the main loop, handle leftover elements in `nums1` or `nums2`. Continue checking `count` for `midIndex1` or `midIndex2` and increment accordingly.
 
 5. **Calculate the Median**:
-   - Call the elements at `index1` and `index2` as `element1` and `element2` respectively.
+   - Call the elements at `midIndex1` and `midIndex2` as `element1` and `element2` respectively.
      - If the total length `(n1+n2)` is even:
        - Median = `(element1 + element2) / 2.0`.
      - If the total length `(n1+n2)` is odd:
@@ -95,8 +95,8 @@ Below is the code implementation:
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int n1 = nums1.length, n2 = nums2.length;
-        int index1 = (n1 + n2 - 1) / 2;
-        int index2 = (n1 + n2) / 2;
+        int midIndex1 = (n1 + n2 - 1) / 2;
+        int midIndex2 = (n1 + n2) / 2;
 
         int i = 0, j = 0, count = 0;
         int element1 = 0, element2 = 0;
@@ -111,20 +111,20 @@ class Solution {
                 j++;
             }
 
-            if (count == index1) element1 = smallerElement;
-            if (count == index2) element2 = smallerElement;
+            if (count == midIndex1) element1 = smallerElement;
+            if (count == midIndex2) element2 = smallerElement;
             count++;
         }
 
         while (i < n1) {
-            if (count == index1) element1 = nums1[i];
-            if (count == index2) element2 = nums1[i];
+            if (count == midIndex1) element1 = nums1[i];
+            if (count == midIndex2) element2 = nums1[i];
             i++; count++;
         }
 
         while (j < n2) {
-            if (count == index1) element1 = nums2[j];
-            if (count == index2) element2 = nums2[j];
+            if (count == midIndex1) element1 = nums2[j];
+            if (count == midIndex2) element2 = nums2[j];
             j++; count++;
         }
 
