@@ -102,17 +102,17 @@ class Solution {
         int element1 = 0, element2 = 0;
 
         while (i < n1 && j < n2) {
-            int smaller;
+            int smallerElement;
             if (nums1[i] <= nums2[j]) {
-                smaller = nums1[i];
+                smallerElement = nums1[i];
                 i++;
             } else {
-                smaller = nums2[j];
+                smallerElement = nums2[j];
                 j++;
             }
 
-            if (count == index1) element1 = smaller;
-            if (count == index2) element2 = smaller;
+            if (count == index1) element1 = smallerElement;
+            if (count == index2) element2 = smallerElement;
             count++;
         }
 
