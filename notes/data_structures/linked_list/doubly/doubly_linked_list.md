@@ -101,3 +101,42 @@ public Node insertBeforeTail(Node head, int val) {
     return head;
 }
 ```
+
+
+## ❌ Deleting the Last Node
+
+### Problem
+
+Given the head of a doubly linked list, **delete the last node** (i.e., the tail).
+
+### Explanation
+
+1. If the list is empty (`head == null`), return `null`.
+2. If the list contains only one node, deleting it makes the list empty → return `null`.
+3. Traverse the list to find the last node (`tail`).
+4. Identify the second-last node (`tail.prev`).
+5. Set the second-last node's `next` to `null`, effectively removing the tail.
+6. Disconnect `tail.prev` to break backward reference.
+7. Return the `head` (which may or may not have changed).
+
+### Code
+
+```java
+public Node deleteTail(Node head) {
+    if (head == null) return null; // Empty list
+    if (head.next == null) return null; // Only one node
+
+    Node current = head;
+    while (current.next != null) {
+        current = current.next;
+    }
+
+    Node tail = current;
+    Node penultimate = tail.prev;
+
+    penultimate.next = null;
+    tail.prev = null; // Optional: helps with garbage collection
+
+    return head;
+}
+```
