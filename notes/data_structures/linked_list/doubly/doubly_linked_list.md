@@ -140,3 +140,93 @@ public Node deleteTail(Node head) {
     return head;
 }
 ```
+
+## 🔁 Reversing the List
+
+### Problem
+
+Given the head of a doubly linked list, **reverse the list in-place** so that the head becomes the tail and vice versa.
+
+### Explanation
+
+1. If the list is empty or has only one node, it’s already reversed — return the same head.
+2. Initialize a pointer `current` to the head and `prev` to `null`.
+3. Traverse the list:
+
+   * For each node, swap the `next` and `prev` pointers.
+   * Move `current` forward by following the **new** `prev` pointer (which was originally `next`).
+4. After traversal, the `prev` pointer holds the previous node of the old head.
+
+   * Its `prev` field (which used to be the next of the last node) points to the new head.
+5. Return `prev.prev` as the new head.
+
+### Code
+
+```java
+public Node reverse(Node head) {
+    if (head == null || head.next == null) return head;
+
+    Node current = head;
+    Node prev = null;
+
+    while (current != null) {
+        // Store original prev
+        prev = current.prev;
+
+        // Swap next and prev pointers
+        current.prev = current.next;
+        current.next = prev;
+
+        // Move to the next node (which is current.prev after the swap)
+        current = current.prev;
+    }
+
+    // After the loop, prev holds the last node we visited
+    // Its prev is the new head
+    return prev.prev;
+}
+```
+
+## 🧱 Reversing the List (Brute-Force)
+
+### Problem
+
+Given the head of a doubly linked list, reverse it **without modifying the links**, by only changing the data values.
+
+### Explanation
+
+1. If the list is empty or has only one node, it's already reversed — return the same head.
+2. Initialize a pointer `current` to the head and a `Stack<Integer>` to store the values.
+3. Traverse the list once, pushing all node `data` values into the stack.
+4. Re-initialize `current` to the head.
+5. Traverse again, and for each node:
+
+   * Pop the top value from the stack.
+   * Assign it to `current.data`.
+6. Return the head (the structure is unchanged, but data values are reversed).
+
+### Code
+
+```java
+public Node reverseBruteForce(Node head) {
+    if (head == null || head.next == null) return head;
+
+    Stack<Integer> stack = new Stack<>();
+    Node current = head;
+
+    // First pass: push all data into the stack
+    while (current != null) {
+        stack.push(current.data);
+        current = current.next;
+    }
+
+    // Second pass: replace node data with values from the stack
+    current = head;
+    while (current != null) {
+        current.data = stack.pop();
+        current = current.next;
+    }
+
+    return head;
+}
+```
