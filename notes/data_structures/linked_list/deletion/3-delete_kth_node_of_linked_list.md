@@ -18,8 +18,25 @@ public Node deleteKthNode(Node head, int k){
         return head;
     }
 
-    
+    Node temp = head;
+    int count = 1;
 
+    // Move to the (k-1)th node
+    while(temp != null && count < k - 1){
+        temp = temp.next;
+        count++;
+    }
+
+    // If k is greater than the length of the list
+    if(temp == null || temp.next == null){
+        return head; // Do nothing, invalid k
+    }
+
+    // Skip the kth node
+    temp.next = temp.next.next;
+
+    return head;
 }
+
 
 ```
