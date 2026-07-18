@@ -5,10 +5,11 @@ class Solution {
             min = Math.min(min, num);
             max = Math.max(max, num);
         }
-        return gcd(min, max);
-    }
-
-    private int gcd(int a, int b) {
-        return b == 0 ? a : gcd(b, a % b);
+        while (max != 0) {
+            int temp = max;
+            max = min % max;
+            min = temp;
+        }
+        return min;
     }
 }
