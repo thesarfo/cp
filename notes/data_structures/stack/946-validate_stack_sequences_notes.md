@@ -1,42 +1,52 @@
 ## LeetCode 946 — Validate Stack Sequences
 
-### Problem
+**Problem link:** https://leetcode.com/problems/validate-stack-sequences/
 
-Given two sequences `pushed` and `popped`, determine if the `popped` sequence could be the result of a valid sequence of push/pop operations on an initially empty stack.
+### The question in plain English
 
-### Approach
+You have two lists of numbers:
 
-Simulate the stack operations against the `popped` sequence:
+- `pushed` — the order you *must* push numbers onto a stack
+- `popped` — the order you *want* to pop numbers off the stack
 
-1. Push elements from `pushed` onto a stack one by one.
-2. After each push, while the top of the stack matches the next element in `popped`, pop it and advance the `popped` pointer.
-3. At the end, if the stack is empty, the sequence is valid.
+You can interleave pushes and pops however you like, but you must push in the given order. Can you end up with the `popped` order?
 
-### Why this works
+### The mental model
 
-The stack is LIFO, so the only element you can pop at any point is the top. The algorithm greedily pops whenever the top matches the expected popped element — if a different order was intended, a mismatch would occur later and the stack would not empty.
+Imagine a stack of plates. You get a pile of plates (`pushed`) and you must add them to the stack in that exact order. While you're doing that, someone asks you to hand them plates — but they can only take the top plate (`popped`).
 
-### Example
+You can decide *when* to hand over a plate. The question is: can you satisfy their requests?
 
+**Example:**
 ```
 pushed = [1, 2, 3, 4, 5]
 popped = [4, 5, 3, 2, 1]
-           ↑
-           pi
 
-push 1 → stack: [1]          top ≠ 4
-push 2 → stack: [1, 2]       top ≠ 4
-push 3 → stack: [1, 2, 3]    top ≠ 4
-push 4 → stack: [1, 2, 3, 4] top = 4 → pop, pi=1
-       → stack: [1, 2, 3]    top = 5? no
-push 5 → stack: [1, 2, 3, 5] top = 5 → pop, pi=2
-       → stack: [1, 2, 3]    top = 3 → pop, pi=3
-       → stack: [1, 2]       top = 2 → pop, pi=4
-       → stack: [1]          top = 1 → pop, pi=5
-       → stack: []           ✓ valid
+1. Push 1.                stack: [1]
+2. Push 2.                stack: [1, 2]
+3. Push 3.                stack: [1, 2, 3]
+4. Push 4.                stack: [1, 2, 3, 4]
+5. Pop 4 → matches!       stack: [1, 2, 3]
+6. Push 5.                stack: [1, 2, 3, 5]
+7. Pop 5 → matches!       stack: [1, 2, 3]
+8. Pop 3 → matches!       stack: [1, 2]
+9. Pop 2 → matches!       stack: [1]
+10. Pop 1 → matches!      stack: []
+
+All matched → valid ✓
 ```
 
-### Time & space
+### The trick (simple version)
 
-- Time: O(n) — each element is pushed once and popped at most once.
-- Space: O(n) — stack holds elements in the worst case (e.g. strictly increasing pushed/decreasing popped).
+Just simulate it. Push numbers one by one. After each push, if the top of the stack matches the next number you need to pop — pop it. Keep popping as long as it matches. At the end, if the stack is empty, the sequence works.
+
+### Why this makes sense
+
+The stack only lets you access the most recent item (LIFO). So when you need to pop a number, it *must* be the top of the stack. The only way to get it to the top is to push numbers until it gets there, then pop it immediately (or pop things above it first).
+
+The greedy approach (pop whenever you can) works because if a pop is valid now, delaying it never helps — it only risks blocking numbers underneath.
+
+### Complexity
+
+- **Time:** O(n) — each number pushed once, popped at most once.
+- **Space:** O(n) — stack size in the worst case.
