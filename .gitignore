@@ -9,3 +9,5 @@ solutions/atcoder/atcoder.iml
 solutions/cses/cses.iml
 solutions/solutions.iml
 .vscode
+*.class
+.cph/
