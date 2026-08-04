@@ -29,6 +29,8 @@ stack.peek();      // top element without removing
 
 Both give O(1) push/pop. The choice rarely matters in interviews: what matters is recognizing *when* to use a stack.
 
+**Practice:** [225 Implement Stack using Queues](https://leetcode.com/problems/implement-stack-using-queues/)
+
 ---
 
 ## The 7 Stack Patterns
@@ -50,7 +52,9 @@ for (char ch : s.toCharArray()) {
 return stack.isEmpty();  // nothing left unclosed
 ```
 
-**Variants:** removing adjacent duplicates (1047) is the same idea but "pairs" are equal letters: push, and pop when the top equals the incoming char.
+**Variants:** removing adjacent duplicates (1047) is the same idea but "pairs" are equal letters: push, and pop when the top equals the incoming char. Decode String (394) stacks both counts and partial strings to rebuild nested groups from the inside out.
+
+**Practice:** [20 Valid Parentheses](https://leetcode.com/problems/valid-parentheses/), [1047 Remove All Adjacent Duplicates](https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/), [1021 Remove Outermost Parentheses](https://leetcode.com/problems/remove-outermost-parentheses/), [394 Decode String](https://leetcode.com/problems/decode-string/)
 
 ### 2. Simulation / Undo
 
@@ -65,7 +69,9 @@ for (char ch : s.toCharArray()) {
 }
 ```
 
-### 3. Monotonic Stack ⭐⭐⭐⭐⭐
+**Practice:** [71 Simplify Path](https://leetcode.com/problems/simplify-path/), [1472 Design Browser History](https://leetcode.com/problems/design-browser-history/), [844 Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/)
+
+### 3. Monotonic Stack
 
 **What:** a stack whose elements are kept sorted (always increasing or always decreasing from bottom to top). Used to find the **next/previous greater/smaller element** for every element, in O(n) instead of O(n²).
 
@@ -96,6 +102,8 @@ int[] nextGreater(int[] arr) {
 
 **Signature problems:** Daily Temperatures (739), Next Greater Element I/II (496, 503), Online Stock Span (901), Largest Rectangle in Histogram (84), Trapping Rain Water (42). Master this one pattern and five medium/hard problems collapse.
 
+**Practice:** [496 Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/), [503 Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/), [739 Daily Temperatures](https://leetcode.com/problems/daily-temperatures/), [901 Online Stock Span](https://leetcode.com/problems/online-stock-span/), [84 Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/), [42 Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)
+
 ### 4. Expression Evaluation
 
 **What:** parsing arithmetic. Postfix (Reverse Polish) needs only an **operand stack**: no parentheses, no precedence.
@@ -115,11 +123,15 @@ return stack.pop();
 
 **Why it works:** operators come *after* their operands in postfix, so when you hit an operator its two operands are already on top of the stack.
 
+**Practice:** [150 Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/)
+
 ### 5. Recursion → Explicit Stack
 
 **What:** recursion uses the call stack automatically. Any recursive traversal can be rewritten iteratively with an explicit stack (important for avoiding stack overflow on deep recursion).
 
 **Why learn it:** some problems are easier to *think* about with a manual stack, and interviews like asking for iterative versions. Example: iterative preorder DFS on a binary tree: push root, pop, push right then left.
+
+**Practice:** implement iterative preorder, inorder, and postorder traversal of a binary tree without recursion (LeetCode 144, 94, 145).
 
 ### 6. Stack + Extra Information
 
@@ -158,7 +170,7 @@ getMin(): return stack.peek()[1];
 1. **Fundamentals:** Implement Stack with Array, with Linked List, [225 Implement Stack using Queues](https://leetcode.com/problems/implement-stack-using-queues/)
 2. **Matching:** [20 Valid Parentheses](https://leetcode.com/problems/valid-parentheses/), [1047 Remove All Adjacent Duplicates](https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/), [1021 Remove Outermost Parentheses](https://leetcode.com/problems/remove-outermost-parentheses/), [394 Decode String](https://leetcode.com/problems/decode-string/)
 3. **Simulation / Undo:** [71 Simplify Path](https://leetcode.com/problems/simplify-path/), [1472 Design Browser History](https://leetcode.com/problems/design-browser-history/), [844 Backspace String Compare](https://leetcode.com/problems/backspace-string-compare/)
-4. **Monotonic Stack** ⭐: [496 Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/), [503 Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/), [739 Daily Temperatures](https://leetcode.com/problems/daily-temperatures/), [901 Online Stock Span](https://leetcode.com/problems/online-stock-span/), [84 Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/), [42 Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)
+4. **Monotonic Stack:** [496 Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/), [503 Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/), [739 Daily Temperatures](https://leetcode.com/problems/daily-temperatures/), [901 Online Stock Span](https://leetcode.com/problems/online-stock-span/), [84 Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/), [42 Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)
 5. **Expression Evaluation:** [150 Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/)
 6. **Recursion & Call Stack:** iterative tree traversals (preorder, inorder, postorder)
 7. **Stack + Extra Info:** [155 Min Stack](https://leetcode.com/problems/min-stack/), [735 Asteroid Collision](https://leetcode.com/problems/asteroid-collision/), [856 Score of Parentheses](https://leetcode.com/problems/score-of-parentheses/)

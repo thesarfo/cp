@@ -29,7 +29,7 @@ grid[r][c]         // element at row r, column c
 
 ---
 
-## The 5 Techniques That Matter
+## The Core Techniques
 
 ### 1. Nested traversal: visit every cell once
 
@@ -149,6 +149,46 @@ visited[r][c] = false;   // the undo
 ```
 
 **Use it when the problem says "find every path" or "does a path exist":** Word Search, Sudoku Solver, N-Queens. The difference from plain DFS is that you're searching for a *specific path* through the grid, so cells must be reusable by other paths.
+
+**Practice:** [79 Word Search](https://leetcode.com/problems/word-search/), [212 Word Search II](https://leetcode.com/problems/word-search-ii/), [37 Sudoku Solver](https://leetcode.com/problems/sudoku-solver/)
+
+### 6. Simulation: follow the rules
+
+**What:** some problems aren't a search at all: they hand you movement or mutation rules and you just execute them.
+**Why it feels hard:** there's no single template: you have to *track boundaries or state carefully* as you go.
+
+- Spiral Matrix (54): walk with changing direction, shrinking the borders as you complete each ring.
+- Rotate Image (48): do it in layers: transpose then reverse each row, or cycle 4 cells at a time.
+- Set Matrix Zeroes (73): mark rows/cols in the first row & column, then fill: avoids extra space.
+- Game of Life (289): encode both old and new state in one value so updates don't interfere.
+
+**Practice:** [54 Spiral Matrix](https://leetcode.com/problems/spiral-matrix/), [59 Spiral Matrix II](https://leetcode.com/problems/spiral-matrix-ii/), [48 Rotate Image](https://leetcode.com/problems/rotate-image/), [73 Set Matrix Zeroes](https://leetcode.com/problems/set-matrix-zeroes/), [289 Game of Life](https://leetcode.com/problems/game-of-life/)
+
+### 7. Matrix DP: build answers from neighbors
+
+**What:** the answer at `(r,c)` depends on answers at already-computed neighbors: usually **top, left, and diagonal**.
+
+**Why the pattern is consistent:** you only move down and right in these problems, so cells are computed before the ones that depend on them (scan rows top-to-bottom, columns left-to-right).
+
+- Unique Paths (62): `dp[r][c] = dp[r-1][c] + dp[r][c-1]` (ways to arrive = ways from top + ways from left).
+- Minimum Path Sum (64): same recurrence, but *take the min* and add the current cost.
+- Maximal Square (221): `dp[r][c] = 1 + min(top, left, diagonal)` when the cell is `1`.
+
+**Practice:** [62 Unique Paths](https://leetcode.com/problems/unique-paths/), [64 Minimum Path Sum](https://leetcode.com/problems/minimum-path-sum/), [221 Maximal Square](https://leetcode.com/problems/maximal-square/), [329 Longest Increasing Path in a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/)
+
+### 8. Prefix sum: instant rectangle sums
+
+**What:** precompute `prefix[r][c]` = sum of the rectangle from `(0,0)` to `(r,c)`. Then any sub-rectangle sum is one formula with inclusion-exclusion:
+
+```java
+sum(a,b,c,d) = prefix[c][d]
+             - prefix[a-1][d] - prefix[c][b-1]
+             + prefix[a-1][b-1];
+```
+
+**When to use:** the problem repeatedly asks for the sum (or average) of sub-rectangles. Without the prefix table each query is O(rows*cols); with it, each is O(1).
+
+**Practice:** [304 Range Sum Query 2D](https://leetcode.com/problems/range-sum-query-2d-immutable/), [1314 Matrix Block Sum](https://leetcode.com/problems/matrix-block-sum/)
 
 ---
 
