@@ -7,23 +7,16 @@
 // @lc code=start
 class Solution {
     public int[] findColumnWidth(int[][] grid) {
-        if (grid == null || grid.length == 0 || grid[0].length == 0) {
-            return new int[0];
-        }
-
-        int rows = grid.length;
         int cols = grid[0].length;
-        int[] res = new int[cols];
+        int rows = grid.length;
 
-        for (int c = 0; c < cols; c++) {
-            int maxWidth = 0;
-            for (int r = 0; r < rows; r++) {
-                int currentLength = String.valueOf(grid[r][c]).length();
-                maxWidth = Math.max(maxWidth, currentLength);
+        int[] res = new int[cols]; 
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                int len = String.valueOf(grid[r][c]).length();
+                res[c] = Math.max(res[c], len);
             }
-            res[c] = maxWidth;
         }
-
         return res;
     }
 }   
