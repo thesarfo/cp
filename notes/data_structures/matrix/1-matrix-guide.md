@@ -1,68 +1,165 @@
-A matrix is just a grid of elements. Think of it as `grid[row][col]` instead of a flat list.
+# Matrices (2D Arrays): Study Guide
 
-## The 5 Things That Matter
+A matrix is just a grid of elements arranged in rows and columns. The core mental shift: stop thinking in one list and think in **coordinates**: every element lives at a position `(row, col)`.
 
-### 1. Basics
+Matrix problems feel hard because they combine patterns you already know (arrays, graphs, DP). But there are only a handful of recurring techniques. Learn those, and you can recognize and solve most matrix problems mechanically.
+
+## How to See a 2D Array
+
+```
+1 2 3
+4 5 6      →      grid = [[1,2,3],
+7 8 9                    [4,5,6],
+                         [7,8,9]]
+
+            row 0 → (0,0) (0,1) (0,2)
+            row 1 → (1,0) (1,1) (1,2)
+            row 2 → (2,0) (2,1) (2,2)
+```
+
+Two facts that matter in every single problem:
 
 ```java
-grid.length        // number of rows
-grid[0].length     // number of columns
+grid.length        // number of ROWS (outer array)
+grid[0].length     // number of COLUMNS (inner array)
 grid[r][c]         // element at row r, column c
 ```
 
-### 2. Nested traversal (visits every cell)
+**Why `grid[0].length` and not `grid[1].length`?** Every row is itself an array; `grid[0]` is the first row, and `.length` on it gives the column count. In a rectangular grid all rows have the same length, so checking row 0 is enough.
+
+---
+
+## The 5 Techniques That Matter
+
+### 1. Nested traversal: visit every cell once
+
+The single most common operation. An outer loop walks rows, an inner loop walks columns:
 
 ```java
-for (int r = 0; r < grid.length; r++) {
-    for (int c = 0; c < grid[0].length; c++) {
+for (int r = 0; r < grid.length; r++) {      // rows
+    for (int c = 0; c < grid[0].length; c++) {  // columns
         // do something with grid[r][c]
     }
 }
 ```
 
-This alone solves easy problems like Transpose Matrix (867) and Reshape Matrix (566).
+**Why this works for so many easy problems:** many matrix questions just want you to *look at every cell*. For example, Transpose Matrix (867) is only "read `grid[r][c]`, write it to `result[c][r]`": swapping the roles of row and column. Reshape Matrix (566) is "read the grid in row-major order, write it into a new grid": you map `index -> row = index / cols`, `col = index % cols`.
 
-### 3. Direction arrays (exploring up/down/left/right)
+**Common beginner confusion:** in the inner loop, `grid[0].length` is safe because the outer loop's `r` guarantees at least one row exists. Use `rows` and `cols` variables so you only compute them once.
 
-Instead of writing the four moves by hand every time:
+### 2. Direction arrays: explore up/down/left/right
+
+The single most important matrix technique. Whenever a problem says "each cell has neighbors" (islands, flood fill, word search, rotting oranges, shortest path...), you need to generate the four neighboring coordinates. Instead of writing four blocks of code by hand:
 
 ```java
 int[][] dirs = {{-1,0},{1,0},{0,-1},{0,1}}; // up, down, left, right
 
 for (int[] d : dirs) {
-    int nr = r + d[0];
-    int nc = c + d[1];
+    int nr = r + d[0];   // add the row offset
+    int nc = c + d[1];   // add the column offset
     if (nr < 0 || nc < 0 || nr >= rows || nc >= cols) continue; // bounds check
-    // visit grid[nr][nc]
+    // work with grid[nr][nc]
 }
 ```
 
-This is the heart of almost every graph-on-grid problem (Number of Islands, Flood Fill, Word Search).
+**Why a table and not four `if` statements?** You get to write the neighbor logic once and reuse it. It also extends naturally: for diagonals, use `{{-1,-1},{-1,1},{1,-1},{1,1}}`; for all 8 directions, combine both arrays.
 
-### 4. Visiting cells (don't revisit)
+**The bounds check is non-negotiable.** A neighbor at row `-1` or column `cols` simply doesn't exist. Skipping it is what keeps the code from crashing: get comfortable writing it without thinking.
 
-Either use a `boolean[][] visited` array, or overwrite the grid itself to mark a cell as seen.
+### 3. Visiting cells: don't explore the same cell twice
 
-### 5. DFS vs BFS
+Most grid searches would loop forever (or redo work) if they revisited cells. Two standard strategies:
 
-- **DFS (recursive):** explore one branch fully, then backtrack. Use for: Number of Islands, Flood Fill.
-- **BFS (queue, level by level):** counts steps/shortest paths. Use for: Rotting Oranges, 01 Matrix, Shortest Path in Binary Matrix.
-- **Multi-source BFS:** push every starting cell into the queue at once and spread together (all rotten oranges at the same time).
-- **Backtracking:** DFS where you also *undo* after exploring: `visited[r][c] = true; dfs(...); visited[r][c] = false;`. Use for: Word Search, Sudoku, N-Queens.
+```java
+boolean[][] visited = new boolean[rows][cols];   // track separately
+// ...or mark the grid itself:
+grid[r][c] = 0;    // change value so it no longer matches the search condition
+```
+
+**When to use which:** a separate `visited` array when the grid's values carry meaning you can't destroy. Modifying the grid in place when it's safe (Flood Fill changes the color anyway; Number of Islands can sink islands to `0`). In-place saves space but mutates input: mention to the interviewer that you did it.
+
+**Where it fits in:** in DFS you mark before recursing; in BFS you mark when you add to the queue (marking on removal is a classic bug that lets duplicates in).
+
+### 4. DFS: explore one branch fully, then backtrack
+
+Depth-first search treats each cell like a graph node connected to its four neighbors. Recursive DFS explores a branch as deep as it can go, then unwinds.
+
+```java
+void dfs(int r, int c) {
+    if (r < 0 || c < 0 || r >= rows || c >= cols) return;  // bounds
+    if (grid[r][c] == 0) return;                            // not part of region
+    grid[r][c] = 0;                                        // mark visited
+    for (int[] d : dirs) dfs(r + d[0], c + d[1]);          // explore neighbors
+}
+```
+
+**Why recursion fits grids:** the call stack naturally tracks the path you're on, so you don't manage a stack yourself.
+
+**Use DFS when the question is about *regions or connectivity***: how many islands, the size of the largest island, filling a region with a new color. You're answering "what's connected to this cell?".
+
+### 5. BFS: explore level by level, counting steps
+
+Breadth-first search explores all cells at distance 1, then all at distance 2, etc., using a queue. This level ordering is what makes BFS the tool for **shortest-path / minimum-steps** problems.
+
+```java
+Queue<int[]> q = new LinkedList<>();
+q.add(new int[]{startR, startC});
+visited[startR][startC] = true;
+int steps = 0;
+
+while (!q.isEmpty()) {
+    int size = q.size();                 // snapshot: one "level"
+    for (int i = 0; i < size; i++) {
+        int[] cell = q.poll();
+        for (int[] d : dirs) {
+            int nr = cell[0] + d[0], nc = cell[1] + d[1];
+            if (out of bounds || visited || blocked) continue;
+            visited[nr][nc] = true;
+            q.add(new int[]{nr, nc});
+        }
+    }
+    steps++;
+}
+```
+
+**The `size` snapshot trick:** processing the queue in batches of `size` lets you count levels: each batch is one step away from the start.
+
+**Multi-source BFS:** instead of one start cell, push *all* sources into the queue at once. In Rotting Oranges (994) you seed the queue with every rotten orange; they all spread at the same rate, so you get the "minutes until all oranges rot" directly. This is a frequent interview trick.
+
+**Quick comparison:** DFS goes deep first, answers connectivity questions. BFS goes wide first, answers distance questions. Same neighborhood concept, different order.
+
+### Bonus: Backtracking: DFS with undo
+
+Backtracking is DFS plus an undo step. You mark a cell, try a direction, and when it fails you *unmark* and try another:
+
+```java
+visited[r][c] = true;
+dfs(...);
+visited[r][c] = false;   // the undo
+```
+
+**Use it when the problem says "find every path" or "does a path exist":** Word Search, Sudoku Solver, N-Queens. The difference from plain DFS is that you're searching for a *specific path* through the grid, so cells must be reusable by other paths.
+
+---
 
 ## Pattern Recognition Cheat Sheet
 
-Ask yourself one question and the approach falls out:
+Most matrix problems announce their approach. Ask: what am I doing to the cells?
 
-| If you are... | Use |
-|---|---|
-| visiting every cell once | nested loops |
-| exploring neighbors | DFS / BFS |
-| following movement rules | simulation (Spiral Matrix, Rotate Image) |
-| finding shortest steps | BFS |
-| maximizing/minimizing | DP (Unique Paths, Min Path Sum, Maximal Square) |
-| trying every path | backtracking |
-| summing rectangles fast | prefix sum matrix |
+| If you are... | Use | Example |
+|---|---|---|
+| visiting every cell once | nested loops | Transpose, Reshape, Diagonal Sum |
+| exploring connected regions | DFS | Number of Islands, Flood Fill |
+| finding shortest steps | BFS | Rotting Oranges, 01 Matrix |
+| following movement rules | simulation | Spiral Matrix, Rotate Image |
+| trying every possible path | backtracking | Word Search, N-Queens |
+| maximizing/minimizing a quantity | DP | Unique Paths, Maximal Square |
+| answering rectangle sums fast | prefix sum matrix | Range Sum Query 2D |
+| starting from many sources | multi-source BFS | Rotting Oranges |
+
+**The hardest part is the first question.** Once you know the category, the implementation is mostly mechanical.
+
+---
 
 ## Practice Roadmap (stages, in order)
 
