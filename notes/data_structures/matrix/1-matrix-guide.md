@@ -47,6 +47,8 @@ for (int r = 0; r < grid.length; r++) {      // rows
 
 **Common beginner confusion:** in the inner loop, `grid[0].length` is safe because the outer loop's `r` guarantees at least one row exists. Use `rows` and `cols` variables so you only compute them once.
 
+**Practice:** [1920 Build Array from Permutation](https://leetcode.com/problems/build-array-from-permutation/), [867 Transpose Matrix](https://leetcode.com/problems/transpose-matrix/), [566 Reshape Matrix](https://leetcode.com/problems/reshape-the-matrix/), [1572 Matrix Diagonal Sum](https://leetcode.com/problems/matrix-diagonal-sum/), [2639 Find the Width of Columns of a Grid](https://leetcode.com/problems/find-the-width-of-columns-of-a-grid/)
+
 ### 2. Direction arrays: explore up/down/left/right
 
 The single most important matrix technique. Whenever a problem says "each cell has neighbors" (islands, flood fill, word search, rotting oranges, shortest path...), you need to generate the four neighboring coordinates. Instead of writing four blocks of code by hand:
@@ -66,6 +68,8 @@ for (int[] d : dirs) {
 
 **The bounds check is non-negotiable.** A neighbor at row `-1` or column `cols` simply doesn't exist. Skipping it is what keeps the code from crashing: get comfortable writing it without thinking.
 
+**Practice:** [200 Number of Islands](https://leetcode.com/problems/number-of-islands/), [733 Flood Fill](https://leetcode.com/problems/flood-fill/), [695 Max Area of Island](https://leetcode.com/problems/max-area-of-island/), [79 Word Search](https://leetcode.com/problems/word-search/)
+
 ### 3. Visiting cells: don't explore the same cell twice
 
 Most grid searches would loop forever (or redo work) if they revisited cells. Two standard strategies:
@@ -79,6 +83,8 @@ grid[r][c] = 0;    // change value so it no longer matches the search condition
 **When to use which:** a separate `visited` array when the grid's values carry meaning you can't destroy. Modifying the grid in place when it's safe (Flood Fill changes the color anyway; Number of Islands can sink islands to `0`). In-place saves space but mutates input: mention to the interviewer that you did it.
 
 **Where it fits in:** in DFS you mark before recursing; in BFS you mark when you add to the queue (marking on removal is a classic bug that lets duplicates in).
+
+**Practice:** [733 Flood Fill](https://leetcode.com/problems/flood-fill/), [200 Number of Islands](https://leetcode.com/problems/number-of-islands/)
 
 ### 4. DFS: explore one branch fully, then backtrack
 
@@ -96,6 +102,8 @@ void dfs(int r, int c) {
 **Why recursion fits grids:** the call stack naturally tracks the path you're on, so you don't manage a stack yourself.
 
 **Use DFS when the question is about *regions or connectivity***: how many islands, the size of the largest island, filling a region with a new color. You're answering "what's connected to this cell?".
+
+**Practice:** [733 Flood Fill](https://leetcode.com/problems/flood-fill/), [200 Number of Islands](https://leetcode.com/problems/number-of-islands/), [695 Max Area of Island](https://leetcode.com/problems/max-area-of-island/), [463 Island Perimeter](https://leetcode.com/problems/island-perimeter/), [130 Surrounded Regions](https://leetcode.com/problems/surrounded-regions/)
 
 ### 5. BFS: explore level by level, counting steps
 
@@ -127,6 +135,8 @@ while (!q.isEmpty()) {
 **Multi-source BFS:** instead of one start cell, push *all* sources into the queue at once. In Rotting Oranges (994) you seed the queue with every rotten orange; they all spread at the same rate, so you get the "minutes until all oranges rot" directly. This is a frequent interview trick.
 
 **Quick comparison:** DFS goes deep first, answers connectivity questions. BFS goes wide first, answers distance questions. Same neighborhood concept, different order.
+
+**Practice:** [994 Rotting Oranges](https://leetcode.com/problems/rotting-oranges/), [542 01 Matrix](https://leetcode.com/problems/01-matrix/), [286 Walls and Gates](https://leetcode.com/problems/walls-and-gates/), [1091 Shortest Path in Binary Matrix](https://leetcode.com/problems/shortest-path-in-binary-matrix/)
 
 ### Bonus: Backtracking: DFS with undo
 
