@@ -1,4 +1,4 @@
-## LeetCode 3517 — Smallest Palindromic Rearrangement I
+## LeetCode 3517: Smallest Palindromic Rearrangement I
 
 ### Problem
 
@@ -6,7 +6,7 @@ Given a **palindromic** string `s`, return the lexicographically smallest palind
 
 ### Key insight
 
-Since `s` is already a palindrome, each character appears an even number of times (except at most one odd-count character that sits in the middle). The string is fully determined by its left half — the right half is just a mirror.
+Since `s` is already a palindrome, each character appears an even number of times (except at most one odd-count character that sits in the middle). The string is fully determined by its left half: the right half is just a mirror.
 
 To get the smallest lexicographic palindrome:
 1. Sort the first half of characters in ascending order.
@@ -32,9 +32,9 @@ return new String(chars)
 Because the input is palindromic, the multiset of characters is already symmetric. Sorting just the left half and mirroring it guarantees:
 
 - The result is a palindrome (by construction).
-- It's the smallest possible palindrome — any smaller candidate would differ at some position in the left half, but we've placed the smallest available characters there.
+- It's the smallest possible palindrome: any smaller candidate would differ at some position in the left half, but we've placed the smallest available characters there.
 
 ### Time & space
 
-- Time: O(n log n) — sorting the left half dominates.
-- Space: O(n) — the char array.
+- Time: O(n log n): sorting the left half dominates.
+- Space: O(n): the char array.

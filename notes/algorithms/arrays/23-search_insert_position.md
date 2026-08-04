@@ -59,8 +59,8 @@ class Solution {
 ```
 
 ### Time Complexity:
-- **Time Complexity**: \( O(\log n) \) — Each iteration of the loop reduces the search space by half, making this a logarithmic solution.
-- **Space Complexity**: \( O(1) \) — No additional space is required beyond the input array.
+- **Time Complexity**: \( O(\log n) \): Each iteration of the loop reduces the search space by half, making this a logarithmic solution.
+- **Space Complexity**: \( O(1) \): No additional space is required beyond the input array.
 
 ### Explanation of Key Parts:
 1. **Binary Search**: The key to solving this problem efficiently is using **binary search** since the array is sorted. Binary search splits the array into halves and narrows down the search space, which reduces the time complexity to \(O(\log n)\).

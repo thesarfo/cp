@@ -1,4 +1,4 @@
-## LeetCode 225 — Implement Stack using Queues
+## LeetCode 225: Implement Stack using Queues
 
 ### Problem
 
@@ -10,7 +10,7 @@ Use two queues `q1` and `q2`. `q1` always holds elements in stack order (most re
 
 **push(x)**
 1. Enqueue `x` into `q2` (the empty auxiliary queue).
-2. Move all elements from `q1` to `q2` — this places `x` at the front of `q2`.
+2. Move all elements from `q1` to `q2`: this places `x` at the front of `q2`.
 3. Swap the references so `q1` points to the queue with stack-order and `q2` becomes empty.
 
 ```
@@ -20,13 +20,13 @@ push(3): q1 = [3, 2, 1]     q2 = []
          (front) → (rear)
 ```
 
-**pop()** — `q1.poll()` removes the front (most recently pushed element).
-**top()** — `q1.peek()` returns the front.
-**empty()** — `q1.isEmpty()`.
+**pop()**: `q1.poll()` removes the front (most recently pushed element).
+**top()**: `q1.peek()` returns the front.
+**empty()**: `q1.isEmpty()`.
 
 ### Time & space
 
-- push: O(n) — moves n elements per push.
+- push: O(n): moves n elements per push.
 - pop / top: O(1).
 - Space: O(n) for the two queues combined.
 

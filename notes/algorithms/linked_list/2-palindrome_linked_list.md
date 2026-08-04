@@ -63,11 +63,11 @@ This method is super readable and easy to write, but not space-efficient. Still,
 
 The optimal approach keeps space usage at **O(1)**. Here's how:
 
-1. First, you **find the middle** of the list using the fast and slow pointer trick. Fast moves two steps at a time, slow moves one — so by the time fast reaches the end, slow is at the middle.
+1. First, you **find the middle** of the list using the fast and slow pointer trick. Fast moves two steps at a time, slow moves one: so by the time fast reaches the end, slow is at the middle.
 
 2. Then, you **reverse the second half** of the list starting from the middle.
 
-3. Now, with two pointers — one from the original head and one from the start of the reversed half — you **compare the two halves**.
+3. Now, with two pointers: one from the original head and one from the start of the reversed half: you **compare the two halves**.
 
 4. If all values match, it’s a palindrome.
 

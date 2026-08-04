@@ -112,4 +112,4 @@ print("Peak is at index:", findPeakElement(arr))
 1. A peak is any element greater than its neighbors.
 2. Check edge cases for small arrays and boundary elements.
 3. Use **binary search** for efficiency by leveraging the increasing/decreasing pattern around peaks.
-4. Multiple peaks? Return any one — both brute force and binary search handle this.
+4. Multiple peaks? Return any one: both brute force and binary search handle this.

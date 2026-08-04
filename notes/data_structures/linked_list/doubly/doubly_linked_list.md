@@ -149,7 +149,7 @@ Given the head of a doubly linked list, **reverse the list in-place** so that th
 
 ### Explanation
 
-1. If the list is empty or has only one node, it’s already reversed — return the same head.
+1. If the list is empty or has only one node, it’s already reversed: return the same head.
 2. Initialize a pointer `current` to the head and `prev` to `null`.
 3. Traverse the list:
 
@@ -195,7 +195,7 @@ Given the head of a doubly linked list, reverse it **without modifying the links
 
 ### Explanation
 
-1. If the list is empty or has only one node, it's already reversed — return the same head.
+1. If the list is empty or has only one node, it's already reversed: return the same head.
 2. Initialize a pointer `current` to the head and a `Stack<Integer>` to store the values.
 3. Traverse the list once, pushing all node `data` values into the stack.
 4. Re-initialize `current` to the head.

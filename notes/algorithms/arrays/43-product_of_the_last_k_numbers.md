@@ -39,7 +39,7 @@ class ProductOfNumbers {
 ### 2. Optimal Solution (Prefix Product):
 #### Idea:
 - Maintain a cumulative product list (prefix). `prefix[i]` = product of all elements from the start up to the `i`-th element.
-- Problem: zeros reset everything — any product spanning a zero is zero.
+- Problem: zeros reset everything: any product spanning a zero is zero.
 - Fix: When `num == 0`, reset the prefix list to `[1]`. On `getProduct(k)`, if `k >= prefix.size()`, a zero was in range so return 0. Otherwise, return `prefix.last() / prefix[prefix.size() - 1 - k]`.
 
 #### Steps:

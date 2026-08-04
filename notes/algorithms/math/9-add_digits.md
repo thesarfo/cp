@@ -52,8 +52,8 @@ class Solution {
 
 ### Time Complexity:
 
-- **Time Complexity**: \( O(1) \) — The solution uses only a few arithmetic operations, making it constant time.
-- **Space Complexity**: \( O(1) \) — The solution does not require any additional space beyond the input number.
+- **Time Complexity**: \( O(1) \): The solution uses only a few arithmetic operations, making it constant time.
+- **Space Complexity**: \( O(1) \): The solution does not require any additional space beyond the input number.
 
 ### Example:
 

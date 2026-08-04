@@ -1,4 +1,4 @@
-This problem is all about carefully converting a string into an integer without using built-in methods like `Integer.parseInt()`. You're expected to handle the same edge cases that a low-level C-style `atoi()` function would deal with — leading spaces, signs, invalid characters, and overflows.
+This problem is all about carefully converting a string into an integer without using built-in methods like `Integer.parseInt()`. You're expected to handle the same edge cases that a low-level C-style `atoi()` function would deal with: leading spaces, signs, invalid characters, and overflows.
 
 [Problem Link](https://leetcode.com/problems/string-to-integer-atoi)
 

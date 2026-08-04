@@ -39,7 +39,7 @@ public int nthRoot(int n, int m) {
 ```
 
 #### Complexity:
-- **Time**: `O(m)` — Loops through all numbers up to `m`.
+- **Time**: `O(m)`: Loops through all numbers up to `m`.
 - **Space**: `O(1)`.
 
 
@@ -77,7 +77,7 @@ public int nthRoot(int n, int m) {
 ```
 
 #### Complexity:
-- **Time**: `O(log m)` — Binary search reduces the search range in each iteration.
+- **Time**: `O(log m)`: Binary search reduces the search range in each iteration.
 - **Space**: `O(1).
 
 

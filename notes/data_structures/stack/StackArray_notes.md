@@ -1,12 +1,12 @@
-## Stack (Array-based) — Java
+## Stack (Array-based): Java
 
 ### Fields
-- `arr[]` — fixed-size integer array to hold stack elements
-- `top` — index of the top element; `-1` when empty
-- `capacity` — maximum number of elements the stack can hold
+- `arr[]`: fixed-size integer array to hold stack elements
+- `top`: index of the top element; `-1` when empty
+- `capacity`: maximum number of elements the stack can hold
 
 ### Constructor
-`StackArray(int size)` — allocates the array and sets `top = -1`.
+`StackArray(int size)`: allocates the array and sets `top = -1`.
 
 ### Operations
 
@@ -29,5 +29,5 @@ Time: O(1)
 Time: O(1)
 
 ### Limitations
-- Fixed capacity — no dynamic resizing.
+- Fixed capacity: no dynamic resizing.
 - Only works with `int` (not generic).

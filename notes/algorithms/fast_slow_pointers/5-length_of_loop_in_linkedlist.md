@@ -3,7 +3,7 @@
 Given the head of a singly linked list, determine the **length of the loop**, if one exists. If there is no loop, return `0`.
 
 
-## 1. Brute Force Approach — Using HashMap
+## 1. Brute Force Approach: Using HashMap
 
 **Idea**:
 Track every visited node along with a "timer" or step count.
@@ -17,7 +17,7 @@ If a node is revisited, the difference in step count between the first and secon
 4. If the list ends (`null`), there is no cycle.
 
 **Time Complexity**: O(n)
-**Space Complexity**: O(n) — due to the hash map
+**Space Complexity**: O(n): due to the hash map
 
 **Java Code**:
 
@@ -40,11 +40,11 @@ public static int lengthOfLoop(Node head) {
 }
 ```
 
-## 2. Optimal Approach — Floyd’s Tortoise and Hare + Loop Length Count
+## 2. Optimal Approach: Floyd’s Tortoise and Hare + Loop Length Count
 
 **Idea**:
 Detect a cycle using Floyd’s algorithm (two-pointer technique).
-Once a cycle is found (i.e., `slow == fast`), keep one pointer fixed and move the other one step at a time until it loops back to the same node. Count the steps during this traversal — that's the loop length.
+Once a cycle is found (i.e., `slow == fast`), keep one pointer fixed and move the other one step at a time until it loops back to the same node. Count the steps during this traversal: that's the loop length.
 
 **Steps**:
 
@@ -89,4 +89,4 @@ static int countLoopLength(Node meetingPoint) {
 ```
 
 **Why It Works**:
-If two pointers meet inside a loop, it means there is a cycle. From any point inside a cycle, traversing the loop will return to the same node after `k` steps — where `k` is the loop length.
+If two pointers meet inside a loop, it means there is a cycle. From any point inside a cycle, traversing the loop will return to the same node after `k` steps: where `k` is the loop length.
